@@ -32,8 +32,7 @@
     font-family: var(--font-base);
     display: grid;
     place-items: center;
-    min-block-size: 100vh;
-    block-size: 100dvh;
+    min-block-size: 100dvh;
     background-color: var(--purple-100);
   }
 
