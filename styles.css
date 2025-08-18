@@ -30,23 +30,20 @@
 
   body {
     font-family: var(--font-base);
-    position: relative;
-    min-block-size: 100vh;
-    display: grid;
-    block-size: 100dvh;
-    background-color: var(--purple-100);
-  }
-
-  main {
     display: grid;
     place-items: center;
+    min-block-size: 100vh;
+    block-size: 100dvh;
+    background-color: var(--purple-100);
   }
 
   body::before {
     content: "";
     block-size: 232px;
     inline-size: 100%;
-    position: absolute;
+    left: 0;
+    top: 0;
+    position: fixed;
     background-image: url("assets/images/background-pattern-mobile.svg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -56,9 +53,6 @@
       background-image: url("assets/images/background-pattern-desktop.svg");
     }
   }
-}
-
-@layer defaults {
 }
 
 @layer components {
