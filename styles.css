@@ -1,4 +1,4 @@
-@layer reset, defaults, components, utilities;
+@layer reset, defaults, components;
 
 @layer reset {
   *,
@@ -25,15 +25,23 @@
 
   :root {
     --font-base: "Work Sans", sans-serif;
+    --white: hsl(0, 0%, 100%);
+    --black: hsl(0, 0%, 0%);
     --purple-100: hsl(275, 100%, 97%);
-    --purple-500: rgba(80, 0, 118, 10%);
+    --purple-500: hsla(281, 100%, 23%, 0.1);
+    --purple-600: hsl(292, 16%, 49%);
+    --purple-950: hsl(292, 42%, 14%);
+    --violet-600: hsl(281, 83%, 54%);
+
     --spacing-24-40: clamp(1.5rem, 0.5458rem + 4.0712vw, 2.5rem);
     --corner-8-16: clamp(0.5rem, 0.0229rem + 2.0356vw, 1rem);
     --font-32-56: clamp(2rem, 0.5687rem + 6.1069vw, 3.5rem);
     --font-14-16: clamp(0.875rem, 0.7557rem + 0.5089vw, 1rem);
-    --fluid-16-18: clamp(1rem, 0.8807rem + 0.5089vw, 1.125rem);
+    --font-16-18: clamp(1rem, 0.8807rem + 0.5089vw, 1.125rem);
     --static-24: 1.5rem;
+    --static-32: 2rem;
     --spacing-24-32: clamp(1.5rem, 1.0229rem + 2.0356vw, 2rem);
+    --shadow: 0 32px 56px 0 var(--purple-500);
   }
 
   body {
@@ -43,13 +51,14 @@
     min-block-size: 100dvh;
     background-color: var(--purple-100);
   }
+
   main {
     padding-inline: var(--static-24);
   }
 
   body::before {
     content: "";
-    block-size: 232px;
+    block-size: 14.5rem;
     inline-size: 100%;
     left: 0;
     top: 0;
@@ -59,7 +68,7 @@
     background-repeat: no-repeat;
     z-index: -1;
     @media (min-width: 768px) {
-      block-size: 320px;
+      block-size: 20rem;
       background-image: url("assets/images/background-pattern-desktop.svg");
     }
   }
@@ -67,16 +76,29 @@
   h1 {
     font-size: var(--font-32-56);
     font-weight: bold;
-    @media (min-width: 768px) {
+    @media (min-width: 48em) {
       line-height: 4.125rem;
     }
   }
 
-  p,
-  summary {
+  p {
     font-size: var(--font-14-16);
     line-height: 1.5;
     max-inline-size: 52ch;
+    color: var(--purple-600);
+  }
+
+  summary {
+    font-size: var(--font-16-18);
+    font-weight: 600;
+    @media (min-width: 48em) {
+      line-height: 1.3125rem;
+    }
+  }
+
+  h1,
+  summary {
+    color: var(--purple-950);
   }
 }
 
@@ -85,8 +107,8 @@
     background-color: white;
     padding: var(--spacing-24-40);
     border-radius: var(--corner-8-16);
-    box-shadow: 0 32px 56px 0 var(--purple-500);
-    width: fit-content;
+    box-shadow: var(--shadow);
+    inline-size: fit-content;
     & h1::before {
       content: "";
       display: inline-block;
@@ -109,21 +131,17 @@
     }
 
     & summary {
-      font-size: var(--font-16-18);
-      font-weight: 600;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 32px;
-      @media (min-width: 768px) {
-        line-height: 1.3125rem;
-      }
+      gap: 2rem;
+
       &::after {
-        content: var(--check-icon, url("assets/images/icon-plus.svg"));
         content: "";
         display: inline-block;
         aspect-ratio: 1/1;
-        inline-size: 30px;
+        inline-size: 1.875rem;
+        flex-shrink: 0;
         background: var(--check-icon, url("assets/images/icon-plus.svg"))
           center/100%;
       }
@@ -142,7 +160,4 @@
       margin-block: var(--static-24);
     }
   }
-}
-
-@layer utilities {
 }
