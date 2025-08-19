@@ -67,7 +67,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     z-index: -1;
-    @media (min-width: 768px) {
+    @media (min-width: 48em) {
       block-size: 20rem;
       background-image: url("assets/images/background-pattern-desktop.svg");
     }
@@ -134,7 +134,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 2rem;
+      gap: 1.9375rem;
 
       &::after {
         content: "";
