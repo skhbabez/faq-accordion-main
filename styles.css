@@ -26,6 +26,14 @@
   :root {
     --font-base: "Work Sans", sans-serif;
     --purple-100: hsl(275, 100%, 97%);
+    --purple-500: rgba(80, 0, 118, 10%);
+    --spacing-24-40: clamp(1.5rem, 0.5458rem + 4.0712vw, 2.5rem);
+    --corner-8-16: clamp(0.5rem, 0.0229rem + 2.0356vw, 1rem);
+    --font-32-56: clamp(2rem, 0.5687rem + 6.1069vw, 3.5rem);
+    --font-14-16: clamp(0.875rem, 0.7557rem + 0.5089vw, 1rem);
+    --fluid-16-18: clamp(1rem, 0.8807rem + 0.5089vw, 1.125rem);
+    --static-24: 1.5rem;
+    --spacing-24-32: clamp(1.5rem, 1.0229rem + 2.0356vw, 2rem);
   }
 
   body {
@@ -34,6 +42,9 @@
     place-items: center;
     min-block-size: 100dvh;
     background-color: var(--purple-100);
+  }
+  main {
+    padding-inline: var(--static-24);
   }
 
   body::before {
@@ -52,9 +63,85 @@
       background-image: url("assets/images/background-pattern-desktop.svg");
     }
   }
+
+  h1 {
+    font-size: var(--font-32-56);
+    font-weight: bold;
+    @media (min-width: 768px) {
+      line-height: 4.125rem;
+    }
+  }
+
+  p,
+  summary {
+    font-size: var(--font-14-16);
+    line-height: 1.5;
+    max-inline-size: 52ch;
+  }
 }
 
 @layer components {
+  .card {
+    background-color: white;
+    padding: var(--spacing-24-40);
+    border-radius: var(--corner-8-16);
+    box-shadow: 0 32px 56px 0 var(--purple-500);
+    width: fit-content;
+    & h1::before {
+      content: "";
+      display: inline-block;
+      aspect-ratio: 1/1;
+      inline-size: var(--spacing-24-40);
+      margin-inline-end: var(--static-24);
+      background: url("assets/images/icon-star.svg") center/100%;
+    }
+  }
+
+  .accordion {
+    margin-block-start: var(--spacing-24-32);
+    & details {
+      p {
+        margin-block-start: var(--static-24);
+      }
+      &[open] {
+        --check-icon: url("assets/images/icon-minus.svg");
+      }
+    }
+
+    & summary {
+      font-size: var(--font-16-18);
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+      @media (min-width: 768px) {
+        line-height: 1.3125rem;
+      }
+      &::after {
+        content: var(--check-icon, url("assets/images/icon-plus.svg"));
+        content: "";
+        display: inline-block;
+        aspect-ratio: 1/1;
+        inline-size: 30px;
+        background: var(--check-icon, url("assets/images/icon-plus.svg"))
+          center/100%;
+      }
+
+      &::marker {
+        content: "";
+      }
+      &::-webkit-details-marker {
+        display: none;
+      }
+    }
+    & details:nth-child(n + 2)::before {
+      content: "";
+      display: block;
+      border-block-start: 1px solid var(--purple-100);
+      margin-block: var(--static-24);
+    }
+  }
 }
 
 @layer utilities {
