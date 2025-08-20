@@ -48,7 +48,7 @@ Users should be able to:
 
 ### What I learned
 
-This was the first time i really built an accordion and it surprised me how simple it is using details/summary elements. This also made making it accessibel quite simple, as i could mostly leverage semantic html. Especially styling the markers turned ou tto be straightforward and entirely doable with only css.
+This was the first time I really built an accordion and it surprised me how simple it is using details/summary elements. This also made making it accessible quite simple, as I could mostly leverage semantic HTML. Especially styling the markers turned out to be straightforward and entirely doable with only CSS.
 
 ```css
 & details {
@@ -58,7 +58,7 @@ This was the first time i really built an accordion and it surprised me how simp
 }
 ```
 
-I struggled most with the background as i wanted to make sure the image essentially has cover set as fit setting. I wanted to make sure it resized naturally without swallowing up the screen. I used a ::before on the body, setting it to a negative z-index. Position fixed ensured it was not messing with my layout, especially the grid i used for positioning my accordion card.
+I struggled most with the background as I wanted to make sure the image essentially has cover set as fit setting. I wanted to make sure it resized naturally without swallowing up the screen. I used a ::before on the body, setting it to a negative z-index. Position fixed ensured it was not messing with my layout, especially the grid I used for positioning my accordion card.
 
 ```css
 body::before {
